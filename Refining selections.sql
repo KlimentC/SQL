@@ -1,14 +1,12 @@
-use store;
+USE store;
 
-create table books (
-book_id INT PRIMARY KEY AUTO_INCREMENT,
-title VARCHAR(50),
-author_fname VARCHAR(50),
-author_lname VARCHAR(50),
-released_year INT,
-stock_quantity INT,
-pages INT
-);
+
+CREATE TABLE books (book_id INT PRIMARY KEY AUTO_INCREMENT,
+                                            title VARCHAR(50),
+                                                  author_fname VARCHAR(50),
+                                                               author_lname VARCHAR(50),
+                                                                            released_year INT, stock_quantity INT, pages INT);
+
 
 INSERT INTO books (title, author_fname, author_lname, released_year, stock_quantity, pages)
 VALUES ('To Kill a Mockingbird', 'Harper', 'Lee', 1960, 30, 324),
@@ -33,149 +31,197 @@ VALUES ('To Kill a Mockingbird', 'Harper', 'Lee', 1960, 30, 324),
        ('The Divine Comedy', 'Dante', 'Alighieri', 1320, 12, 798);
 
 
-INSERT INTO books
-    (title, author_fname, author_lname, released_year, stock_quantity, pages)
-    VALUES ('10% Happier', 'Dan', 'Harris', 2014, 29, 256), 
-           ('fake_book', 'Freida', 'Harris', 2001, 287, 428),
-           ('Lincoln In The Bardo', 'George', 'Saunders', 2017, 1000, 367);
-
-INSERT INTO books
-    (title, author_fname, author_lname, released_year, stock_quantity, pages)
-    VALUES ('KBook with sapce', 'Kliment', 'Big Chakarovski', 2004, 89, 886);
-	
-    
-select * 
-from books;
-
-select  author_lname
-from books;
+INSERT INTO books (title, author_fname, author_lname, released_year, stock_quantity, pages)
+VALUES ('10% Happier', 'Dan', 'Harris', 2014, 29, 256),
+       ('fake_book', 'Freida', 'Harris', 2001, 287, 428),
+       ('Lincoln In The Bardo', 'George', 'Saunders', 2017, 1000, 367);
 
 
-select distinct author_lname
-from books;
-
-select released_year
-from books;
+INSERT INTO books (title, author_fname, author_lname, released_year, stock_quantity, pages)
+VALUES ('KBook with sapce', 'Kliment', 'Big Chakarovski', 2004, 89, 886);
 
 
-select distinct released_year
-from books;
-
-select concat_ws(" ",  author_fname, author_lname)
-from books;
-
-select distinct concat_ws(" ",  author_fname, author_lname) AS NoDuplicateNames
-from books;
+SELECT *
+FROM books;
 
 
-select distinct author_fname, author_lname AS NoDuplicateNamesNoConcat
-from books;
+SELECT author_lname
+FROM books;
 
+
+SELECT DISTINCT author_lname
+FROM books;
+
+
+SELECT released_year
+FROM books;
+
+
+SELECT DISTINCT released_year
+FROM books;
+
+
+SELECT concat_ws(" ", author_fname, author_lname)
+FROM books;
+
+
+SELECT DISTINCT concat_ws(" ", author_fname, author_lname) AS NoDuplicateNames
+FROM books;
+
+
+SELECT DISTINCT author_fname,
+                author_lname AS NoDuplicateNamesNoConcat
+FROM books;
 
 -- Everything should be different(3 columns)
-select distinct author_fname, author_lname, released_year AS NoDuplicateNamesNoConcat
-from books;
+
+SELECT DISTINCT author_fname,
+                author_lname,
+                released_year AS NoDuplicateNamesNoConcat
+FROM books;
 
 
-select book_id, title, author_lname 
-from books;
+SELECT book_id,
+       title,
+       author_lname
+FROM books;
 
-INSERT into books (title, author_lname) VALUES ("my life", "cakar");
 
-select book_id, author_fname , author_lname 
-from books
+INSERT INTO books (title, author_lname)
+VALUES ("my life", "cakar");
+
+
+SELECT book_id,
+       author_fname,
+       author_lname
+FROM books
 ORDER BY author_lname DESC;
 
-select title,pages
-from books
-ORDER By pages DESC;
 
-select title,pages
-from books
-ORDER By pages;
-
-
-
-select title,pages
-from books
-ORDER By released_year DESC;
-
-
-select book_id, author_fname, author_lname, pages
-from books
-ORDER By 4;
-
-select author_lname, released_year, title 
-from books
-order by author_lname, released_year;
-
-
-SELECT concat(author_fname, " ", author_lname) as FullAuthorName
+SELECT title,
+       pages
 FROM books
-order by FullAuthorName;
+ORDER BY pages DESC;
 
 
-select book_id, title, released_year
-from books
-ORDER by released_year
-limit 5;
-
-select book_id, title, released_year
-from books
-ORDER by released_year
-limit 10;
-
-select book_id, title, released_year
-from books
-ORDER by released_year DESC
-limit 10;
-
-select book_id, title, released_year
-from books
-ORDER by released_year DESC
-limit 3;
-
-select book_id, title, released_year
-from books
-ORDER by released_year;
-
-select title, author_fname, author_lname
-from books
-where author_lname LIKE '%tw%';
+SELECT title,
+       pages
+FROM books
+ORDER BY pages;
 
 
-select *
-from books;
-
-select title, pages
-from books
-ORDER BY pages desc
-limit 1; 
+SELECT title,
+       pages
+FROM books
+ORDER BY released_year DESC;
 
 
-select concat_ws(" - ", title,released_year)as Summary 
-from books
-Order by released_year  DESC
-limit 3;
-
-select title, author_lname
-from books
-where author_lname LIKE "% %";
+SELECT book_id,
+       author_fname,
+       author_lname,
+       pages
+FROM books
+ORDER BY 4;
 
 
-select title, released_year,stock_quantity
-from books
+SELECT author_lname,
+       released_year,
+       title
+FROM books
+ORDER BY author_lname,
+         released_year;
+
+
+SELECT concat(author_fname, " ", author_lname) AS FullAuthorName
+FROM books
+ORDER BY FullAuthorName;
+
+
+SELECT book_id,
+       title,
+       released_year
+FROM books
+ORDER BY released_year
+LIMIT 5;
+
+
+SELECT book_id,
+       title,
+       released_year
+FROM books
+ORDER BY released_year
+LIMIT 10;
+
+
+SELECT book_id,
+       title,
+       released_year
+FROM books
+ORDER BY released_year DESC
+LIMIT 10;
+
+
+SELECT book_id,
+       title,
+       released_year
+FROM books
+ORDER BY released_year DESC
+LIMIT 3;
+
+
+SELECT book_id,
+       title,
+       released_year
+FROM books
+ORDER BY released_year;
+
+
+SELECT title,
+       author_fname,
+       author_lname
+FROM books
+WHERE author_lname LIKE '%tw%';
+
+
+SELECT *
+FROM books;
+
+
+SELECT title,
+       pages
+FROM books
+ORDER BY pages DESC
+LIMIT 1;
+
+
+SELECT concat_ws(" - ", title, released_year)AS SUMMARY
+FROM books
+ORDER BY released_year DESC
+LIMIT 3;
+
+
+SELECT title,
+       author_lname
+FROM books
+WHERE author_lname LIKE "% %";
+
+
+SELECT title,
+       released_year,
+       stock_quantity
+FROM books
 ORDER BY stock_quantity
-limit 1,3;
-
-select title, author_lname
-from books
-order by author_lname, title;
-
-select concat("MY FAVOURITE AUTHOR IS ", UPPER(author_fname), " ", UPPER(author_lname), "!" ) as yell
-from books
-order by author_lname;
+LIMIT 1,
+      3;
 
 
+SELECT title,
+       author_lname
+FROM books
+ORDER BY author_lname,
+         title;
 
 
+SELECT concat("MY FAVOURITE AUTHOR IS ", UPPER(author_fname), " ", UPPER(author_lname), "!") AS yell
+FROM books
+ORDER BY author_lname;
