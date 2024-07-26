@@ -193,3 +193,39 @@ SET text="I love diving";
 
 SELECT *
 FROM captions2;
+
+
+CREATE TABLE inventory (item_name varchar(20),
+                                  price DECIMAL(7, 2),
+                                        quantity int);
+
+
+SELECT curtime();
+
+
+SELECT curdate();
+
+
+SELECT DAYOFWEEK(curdate());
+
+
+SELECT dayname(now());
+
+
+SELECT date_format(NOW(), '%D');
+
+
+SELECT date_format(curdate(), "%m/%d/%Y");
+
+
+CREATE TABLE tweets (content varchar(180),
+                             username varchar(20),
+                                      created_at timestamp DEFAULT CURRENT_TIMESTAMP);
+
+
+INSERT INTO tweets (content, username)
+VALUES("What is this", "David");
+
+
+SELECT *
+FROM tweets;
