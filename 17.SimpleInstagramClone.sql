@@ -1,3 +1,5 @@
+-- Creation of the DB and also the tables
+
 create database CloneOfInstagram;
 use CloneOfInstagram;
 
